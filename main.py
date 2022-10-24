@@ -218,6 +218,7 @@ Here you should write all of the tests you want to run for your code
 Think about testing invalid inputs as well as boundary testing
 """
 
+print("test")
 
 # Change if you want to see the existing tests be run
 running_existing_tests = False
