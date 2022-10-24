@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>main module &#8212; TutorialProject 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-main">
+<span id="main-module"></span><h1>main module<a class="headerlink" href="#module-main" title="Permalink to this heading">¶</a></h1>
+<p>This is the main file that will be ran in the code.
+This file contains 4 classes for the problem described. As well as
+some testing code for the classes.
+The only import used is Enum, which allows for Enumerations in Python.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="main.Car">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">Car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_seats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#Car"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.Car" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#main.Vehicle" title="main.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vehicle</span></code></a></p>
+<p>A specific subclass of vehicle that represents a car. No unique attributes / methods.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main.FuelType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">FuelType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#FuelType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.FuelType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>This is an Enum for the 3 valid fuel types for a vehicle.
+It can be either Petrol, Diesel or Electric</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main.FuelType.DIESEL">
+<span class="sig-name descname"><span class="pre">DIESEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#main.FuelType.DIESEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main.FuelType.ELECTRIC">
+<span class="sig-name descname"><span class="pre">ELECTRIC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#main.FuelType.ELECTRIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main.FuelType.PETROL">
+<span class="sig-name descname"><span class="pre">PETROL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#main.FuelType.PETROL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main.Lorry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">Lorry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_seats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#Lorry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.Lorry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#main.Vehicle" title="main.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vehicle</span></code></a></p>
+<p>Here is where you will implement your model.
+It should contain the following:</p>
+<blockquote>
+<div><p>A variable representing if the Lorry is carrying a trailer
+A variable representing the length of the Lorry. It should
+be between 4000 and 18750</p>
+</div></blockquote>
+<dl class="simple">
+<dt>It should contain 2 methods:</dt><dd><p>__init__(): That initiates the class
+dock(): That should dock a trailer if there is no trailer and undock if it is</p>
+</dd>
+</dl>
+<p>You should remember sensible variable naming conventions as well as validation</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main.Motorbike">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">Motorbike</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_seats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">can_wheelie</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#Motorbike"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.Motorbike" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#main.Vehicle" title="main.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vehicle</span></code></a></p>
+<p>A specific subclass of vehicle that represents a motorbike. It additionally contains
+attributes:</p>
+<blockquote>
+<div><p>can_wheelie: (boolean) If the motorbike can wheelie or not</p>
+</div></blockquote>
+<dl>
+<dt>methods:</dt><dd><p>__init__(engine_size, num_of_seats, fuel_type, can_wheelie):
+sets the can_wheelie boolean and calls the parent constructor</p>
+<p>wheelie(): A method that performs a wheelie</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="main.Motorbike.wheelie">
+<span class="sig-name descname"><span class="pre">wheelie</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#Motorbike.wheelie"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.Motorbike.wheelie" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>A method that performs a bike wheelie</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>There is no return</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main.Van">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">Van</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_seats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#Van"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.Van" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#main.Vehicle" title="main.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vehicle</span></code></a></p>
+<p>A specific subclass of vehicle that represents a van. It additionally contains
+attributes:</p>
+<blockquote>
+<div><p>payload: (int) The amount of weight the van can carry</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main.Vehicle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">Vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_seats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#Vehicle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.Vehicle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is the parent class of car, motorbike and van: vehicle.
+It models the general functionality a vehicle can do.
+It contains 3 attributes:</p>
+<blockquote>
+<div><p>engine_size: (int) The size of the vehicles’ engine.</p>
+<p>num_of_seats: (int) The number of seats the vehicle has.</p>
+<p>fuel_type: (FuelType) The type of fuel the vehicle uses.</p>
+</div></blockquote>
+<dl>
+<dt>It contains 2 methods:</dt><dd><p>__init__(engine_size, num_of_seats, fuel_type): Initiates the class</p>
+<p>drive(): Performs the driving function*</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="main.Vehicle.drive">
+<span class="sig-name descname"><span class="pre">drive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#Vehicle.drive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.Vehicle.drive" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>A method that performs the driving functionality of a vehicle</dt><dd><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>There is no return</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">TutorialProject</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Louis Goodland.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/main.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>main &#8212; TutorialProject 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for main</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is the main file that will be ran in the code.</span>
+<span class="sd">This file contains 4 classes for the problem described. As well as</span>
+<span class="sd">some testing code for the classes.</span>
+<span class="sd">The only import used is Enum, which allows for Enumerations in Python.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Import used for Enumeration</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+
+<div class="viewcode-block" id="FuelType"><a class="viewcode-back" href="../main.html#main.FuelType">[docs]</a><span class="k">class</span> <span class="nc">FuelType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is an Enum for the 3 valid fuel types for a vehicle.</span>
+<span class="sd">    It can be either Petrol, Diesel or Electric</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">PETROL</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">DIESEL</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">ELECTRIC</span> <span class="o">=</span> <span class="mi">3</span></div>
+
+
+<div class="viewcode-block" id="Vehicle"><a class="viewcode-back" href="../main.html#main.Vehicle">[docs]</a><span class="k">class</span> <span class="nc">Vehicle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is the parent class of car, motorbike and van: vehicle.</span>
+<span class="sd">    It models the general functionality a vehicle can do.</span>
+<span class="sd">    It contains 3 attributes:</span>
+<span class="sd">        engine_size: (int) The size of the vehicles&#39; engine.</span>
+
+<span class="sd">        num_of_seats: (int) The number of seats the vehicle has.</span>
+
+<span class="sd">        fuel_type: (FuelType) The type of fuel the vehicle uses.</span>
+
+<span class="sd">    It contains 2 methods:</span>
+<span class="sd">        __init__(engine_size, num_of_seats, fuel_type): Initiates the class</span>
+
+<span class="sd">        drive(): Performs the driving function*</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine_size</span><span class="p">,</span> <span class="n">num_of_seats</span><span class="p">,</span> <span class="n">fuel_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialise method that sets the input parameters to the class attributes after validation</span>
+<span class="sd">            :param engine_size: (int) representing the engine size in cc</span>
+
+<span class="sd">            :param num_of_seats: (int) representing the number of seats</span>
+
+<span class="sd">            :param fuel_type: (FuelType) A representation the vehicles fuel type</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Throws an error if a vehicle is created (not van / car e.t.c)</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Vehicle</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Base is an abstract class and cannot be instantiated directly&#39;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="c1"># Checks that each of the parameters are of the correct type</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">engine_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;engine_size is not an integer&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">num_of_seats</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;num_of_seats is not an integer&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fuel_type</span><span class="p">,</span> <span class="n">FuelType</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;fuel_type is not a FuelType&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Checks that the engine size and number of seats are valid</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">engine_size</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Invalid engine size&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">num_of_seats</span> <span class="o">&lt;</span> <span class="mi">21</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Invalid amount of seats&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Sets the class variables to the input variables</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">engine_size</span> <span class="o">=</span> <span class="n">engine_size</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_of_seats</span> <span class="o">=</span> <span class="n">num_of_seats</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fuel_type</span> <span class="o">=</span> <span class="n">fuel_type</span>
+
+        <span class="c1"># Prints any errors if they occur</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+            <span class="c1"># Creates a default Vehicle if the inputs are invalid</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;creating default vehicle&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">engine_size</span> <span class="o">=</span> <span class="mi">1000</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_of_seats</span> <span class="o">=</span> <span class="mi">4</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fuel_type</span> <span class="o">=</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">PETROL</span>
+
+<div class="viewcode-block" id="Vehicle.drive"><a class="viewcode-back" href="../main.html#main.Vehicle.drive">[docs]</a>    <span class="k">def</span> <span class="nf">drive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A method that performs the driving functionality of a vehicle</span>
+<span class="sd">            :return: There is no return</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Driving...&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fuel_type</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Car"><a class="viewcode-back" href="../main.html#main.Car">[docs]</a><span class="k">class</span> <span class="nc">Car</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A specific subclass of vehicle that represents a car. No unique attributes / methods.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Lorry"><a class="viewcode-back" href="../main.html#main.Lorry">[docs]</a><span class="k">class</span> <span class="nc">Lorry</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Here is where you will implement your model.</span>
+<span class="sd">    It should contain the following:</span>
+<span class="sd">        A variable representing if the Lorry is carrying a trailer</span>
+<span class="sd">        A variable representing the length of the Lorry. It should</span>
+<span class="sd">        be between 4000 and 18750</span>
+<span class="sd">    It should contain 2 methods:</span>
+<span class="sd">        __init__(): That initiates the class</span>
+<span class="sd">        dock(): That should dock a trailer if there is no trailer and undock if it is</span>
+<span class="sd">    You should remember sensible variable naming conventions as well as validation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Motorbike"><a class="viewcode-back" href="../main.html#main.Motorbike">[docs]</a><span class="k">class</span> <span class="nc">Motorbike</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A specific subclass of vehicle that represents a motorbike. It additionally contains</span>
+<span class="sd">    attributes:</span>
+<span class="sd">        can_wheelie: (boolean) If the motorbike can wheelie or not</span>
+<span class="sd">    methods:</span>
+<span class="sd">        __init__(engine_size, num_of_seats, fuel_type, can_wheelie):</span>
+<span class="sd">        sets the can_wheelie boolean and calls the parent constructor</span>
+
+<span class="sd">        wheelie(): A method that performs a wheelie</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine_size</span><span class="p">,</span> <span class="n">num_of_seats</span><span class="p">,</span> <span class="n">fuel_type</span><span class="p">,</span> <span class="n">can_wheelie</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialise method that sets the can_wheelie boolean if its valid and calls the parent constructor</span>
+<span class="sd">            :param engine_size: (int) representing the engine size in cc</span>
+
+<span class="sd">            :param num_of_seats: (int) representing the number of seats</span>
+
+<span class="sd">            :param fuel_type: (FuelType) A representation the vehicles fuel type</span>
+
+<span class="sd">            :param can_wheelie: (boolean) If the motorbike can wheelie or not</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="c1"># Checks that can_wheelie is a boolean</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">can_wheelie</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;can_wheelie is not a boolean&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Sets the class variables and calls the parent constructor</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">can_wheelie</span> <span class="o">=</span> <span class="n">can_wheelie</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">engine_size</span><span class="p">,</span> <span class="n">num_of_seats</span><span class="p">,</span> <span class="n">fuel_type</span><span class="p">)</span>
+
+        <span class="c1"># Prints any errors if they occur</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+            <span class="c1"># Creates a default Vehicle if the inputs are invalid</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;creating default bike&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">can_wheelie</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">PETROL</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Motorbike.wheelie"><a class="viewcode-back" href="../main.html#main.Motorbike.wheelie">[docs]</a>    <span class="k">def</span> <span class="nf">wheelie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A method that performs a bike wheelie</span>
+<span class="sd">            :return: There is no return</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># If the bike can wheelie, do a wheelie</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can_wheelie</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;doing a wheelie&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Van"><a class="viewcode-back" href="../main.html#main.Van">[docs]</a><span class="k">class</span> <span class="nc">Van</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A specific subclass of vehicle that represents a van. It additionally contains</span>
+<span class="sd">    attributes:</span>
+<span class="sd">        payload: (int) The amount of weight the van can carry</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine_size</span><span class="p">,</span> <span class="n">num_of_seats</span><span class="p">,</span> <span class="n">fuel_type</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialisation method that sets the payload if its valid and calls the parent constructor</span>
+<span class="sd">        :param engine_size: (int) representing the engine size in cc</span>
+
+<span class="sd">        :param num_of_seats: (int) representing the number of seats</span>
+
+<span class="sd">        :param fuel_type: (FuelType) A representation the vehicles fuel type</span>
+
+<span class="sd">        :param payload: (int) The amount in kg of payload the van can carry</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="c1"># Validates that the payload is an int between 0 and 2000</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;payload is not an integer&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">payload</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;payload is not between 0 and 2000&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Sets the payload and calls the parent constructor</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="n">payload</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">engine_size</span><span class="p">,</span> <span class="n">num_of_seats</span><span class="p">,</span> <span class="n">fuel_type</span><span class="p">)</span>
+
+        <span class="c1"># Prints any errors if they occur</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+            <span class="c1"># Creates a default Vehicle if the inputs are invalid</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;creating default van&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="mi">1000</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">PETROL</span><span class="p">)</span></div>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Here you should write all of the tests you want to run for your code</span>
+<span class="sd">Think about testing invalid inputs as well as boundary testing</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># Change if you want to see the existing tests be run</span>
+<span class="n">running_existing_tests</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">running_existing_tests</span><span class="p">:</span>
+    <span class="c1"># Testing invalid vehicle inputs</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="s2">&quot;invalid_engine_size&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test2</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;invalid_num_of_seats&quot;</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test3</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;invalid_fuel_type&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Testing invalid motorbike inputs</span>
+    <span class="n">test4</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="s2">&quot;invalid_can_wheelie&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Testing invalid van inputs</span>
+    <span class="n">test5</span> <span class="o">=</span> <span class="n">Van</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="s2">&quot;invalid_payload&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Boundary testing engine size</span>
+    <span class="n">test6</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">999999</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test7</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test9</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">9999</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test10</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test11</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="o">-</span><span class="mi">999999</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Boundary testing seat amount</span>
+    <span class="n">test12</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test13</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test14</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test15</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test16</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Boundary testing fuel type</span>
+    <span class="n">test17</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">PETROL</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">test18</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">ELECTRIC</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Other fuel types not accepted (will be highlighted)</span>
+
+    <span class="c1"># Boundary Testing can wheelie</span>
+    <span class="n">test19</span> <span class="o">=</span> <span class="n">Motorbike</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Boundary Testing payload</span>
+    <span class="n">test20</span> <span class="o">=</span> <span class="n">Van</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">test21</span> <span class="o">=</span> <span class="n">Van</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">test22</span> <span class="o">=</span> <span class="n">Van</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">test23</span> <span class="o">=</span> <span class="n">Van</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="mi">1999</span><span class="p">)</span>
+    <span class="n">test24</span> <span class="o">=</span> <span class="n">Van</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+
+    <span class="c1"># Testing that vehicle is abstract</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">test25</span> <span class="o">=</span> <span class="n">Vehicle</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">FuelType</span><span class="o">.</span><span class="n">DIESEL</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">TutorialProject</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Louis Goodland.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
