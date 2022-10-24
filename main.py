@@ -100,17 +100,70 @@ class Car(Vehicle):
 
 class Lorry(Vehicle):
     """
-    Here is where you will implement your model.
-    It should contain the following:
-        A variable representing if the Lorry is carrying a trailer
-        A variable representing the length of the Lorry. It should
-        be between 4000 and 18750
-    It should contain 2 methods:
-        __init__(): That initiates the class
-        dock(): That should dock a trailer if there is no trailer and undock if it is
-    You should remember sensible variable naming conventions as well as validation
+    A specific subclass of vehicle that represents a lorry. It additionally contains
+    attributes:
+        has_a_trailer: (boolean) If the lorry has a trailer or not
+
+        length: (int) The length of the lorry
+    methods:
+        __init__(engine_size, num_of_seats, fuel_type, has_a_trailer, length):
+        sets the has_a_trailer boolean and length then calls the parent constructor
+
+        wheelie(): A method that docks or undocks the trailer
+
     """
-    pass
+
+    def __init__(self, engine_size, num_of_seats, fuel_type, has_a_trailer, length):
+        """
+                Initialise method that sets the can_wheelie boolean if its valid and calls the parent constructor
+                    :param engine_size: (int) representing the engine size in cc
+
+                    :param num_of_seats: (int) representing the number of seats
+
+                    :param fuel_type: (FuelType) A representation the vehicles fuel type
+
+                    :param has_a_trailer: (boolean) If the lorry has a trailer
+
+                    :param length: (int) The length of the lorry
+
+                """
+
+        try:
+
+            # Checks that has_a_trailer is a boolean and the length is an integer
+            if not isinstance(has_a_trailer, bool):
+                raise Exception("can_wheelie is not a boolean")
+            if not isinstance(length, int):
+                raise Exception("length is not an int")
+
+            # Checks the length is valid
+            if not 3999 < engine_size < 18751:
+                raise Exception("Invalid length")
+
+            # Sets the class variables and calls the parent constructor
+            self.has_a_trailer = has_a_trailer
+            self.length = length
+            super().__init__(engine_size, num_of_seats, fuel_type)
+
+        # Prints any errors if they occur
+        except Exception as e:
+            print(str(e))
+
+            # Creates a default Vehicle if the inputs are invalid
+            print("creating default lorry")
+            self.has_a_trailer = False
+            self.length = 6000
+            super().__init__(1000, 4, FuelType.PETROL)
+
+    def dock(self):
+        """
+        A method that performs the docking functionality
+            :return: There is no return
+        """
+        if self.has_a_trailer:
+            self.has_a_trailer = False
+        else:
+            self.has_a_trailer = True
 
 
 class Motorbike(Vehicle):
@@ -220,7 +273,7 @@ Think about testing invalid inputs as well as boundary testing
 
 
 # Change if you want to see the existing tests be run
-running_existing_tests = False
+running_existing_tests = True
 if running_existing_tests:
     # Testing invalid vehicle inputs
     test = Motorbike("invalid_engine_size", 4, FuelType.DIESEL, True)
